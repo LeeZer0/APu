@@ -1,0 +1,89 @@
+> library(ahp)
+> library(data.tree)
+> getwd()
+[1] "G:/APU/APu/lab2"
+> setwd("G:/APU/APu/lab2")
+> tablety_AHP <- Load("Tablety2.yml")
+> 
+> 
+>  
+>   print(tablety_AHP, filterFun = isNotLeaf)
+       levelName
+1 Kup tablet    
+2  ¦--efficiency
+3  ¦--quality   
+4  ¦--style     
+5  °--price     
+> 
+> 
+>   Calculate(tablety_AHP)
+>   print(tablety_AHP, priority = function(x) x$parent$priority["Total", x$name])
+          levelName   priority
+1  Kup tablet               NA
+2   ¦--efficiency   0.56487557
+3   ¦   ¦--Tablet01 0.08333333
+4   ¦   ¦--Tablet02 0.08333333
+5   ¦   ¦--Tablet03 0.08333333
+6   ¦   ¦--Tablet04 0.08333333
+7   ¦   ¦--Tablet05 0.08333333
+8   ¦   ¦--Tablet06 0.08333333
+9   ¦   ¦--Tablet07 0.08333333
+10  ¦   ¦--Tablet08 0.08333333
+11  ¦   ¦--Tablet09 0.08333333
+12  ¦   ¦--Tablet10 0.08333333
+13  ¦   ¦--Tablet11 0.08333333
+14  ¦   °--Tablet12 0.08333333
+15  ¦--quality      0.30028868
+16  ¦   ¦--Tablet01 0.08333333
+17  ¦   ¦--Tablet02 0.08333333
+18  ¦   ¦--Tablet03 0.08333333
+19  ¦   ¦--Tablet04 0.08333333
+20  ¦   ¦--Tablet05 0.08333333
+21  ¦   ¦--Tablet06 0.08333333
+22  ¦   ¦--Tablet07 0.08333333
+23  ¦   ¦--Tablet08 0.08333333
+24  ¦   ¦--Tablet09 0.08333333
+25  ¦   ¦--Tablet10 0.08333333
+26  ¦   ¦--Tablet11 0.08333333
+27  ¦   °--Tablet12 0.08333333
+28  ¦--style        0.08308047
+29  ¦   ¦--Tablet01 0.12233721
+30  ¦   ¦--Tablet02 0.10073306
+31  ¦   ¦--Tablet03 0.09557121
+32  ¦   ¦--Tablet04 0.07569081
+33  ¦   ¦--Tablet05 0.03309142
+34  ¦   ¦--Tablet06 0.03113993
+35  ¦   ¦--Tablet07 0.10200667
+36  ¦   ¦--Tablet08 0.13069399
+37  ¦   ¦--Tablet09 0.11874502
+38  ¦   ¦--Tablet10 0.06366310
+39  ¦   ¦--Tablet11 0.03992702
+40  ¦   °--Tablet12 0.08640056
+41  °--price        0.05175529
+42      ¦--Tablet01 0.12016401
+43      ¦--Tablet02 0.09406052
+44      ¦--Tablet03 0.10025710
+45      ¦--Tablet04 0.07695763
+46      ¦--Tablet05 0.10571131
+47      ¦--Tablet06 0.05028063
+48      ¦--Tablet07 0.08448109
+49      ¦--Tablet08 0.11379352
+50      ¦--Tablet09 0.04976349
+51      ¦--Tablet10 0.06320298
+52      ¦--Tablet11 0.05534884
+53      °--Tablet12 0.08597888
+>   Visualize(tablety_AHP)
+>   Analyze(tablety_AHP)
+                 Weight Tablet08 Tablet01 Tablet02 Tablet03 Tablet07 Tablet09 Tablet12 Tablet04 Tablet10 Tablet05
+1 Kup tablet     100.0%     8.9%     8.8%     8.5%     8.5%     8.5%     8.5%     8.4%     8.2%     8.1%     8.0%
+2  ¦--efficiency  56.5%     4.7%     4.7%     4.7%     4.7%     4.7%     4.7%     4.7%     4.7%     4.7%     4.7%
+3  ¦--quality     30.0%     2.5%     2.5%     2.5%     2.5%     2.5%     2.5%     2.5%     2.5%     2.5%     2.5%
+4  ¦--style        8.3%     1.1%     1.0%     0.8%     0.8%     0.8%     1.0%     0.7%     0.6%     0.5%     0.3%
+5  °--price        5.2%     0.6%     0.6%     0.5%     0.5%     0.4%     0.3%     0.4%     0.4%     0.3%     0.5%
+  Tablet11 Tablet06 Inconsistency
+1     7.8%     7.7%         12.1%
+2     4.7%     4.7%        109.1%
+3     2.5%     2.5%        129.0%
+4     0.3%     0.3%         83.5%
+5     0.3%     0.3%         89.6%
+>   AnalyzeTable(tablety_AHP)
