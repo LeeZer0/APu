@@ -1,0 +1,489 @@
+> nor <- function(x) {
++   return ((x - min(x)) / (max(x) - min(x)))
++ }
+> 
+> arg <-as.data.frame(runif(100, min = 1, max = 100))
+> wynik_f <- arg^3-2*arg
+> 
+> arg
+    runif(100, min = 1, max = 100)
+1                        33.640613
+2                        74.928313
+3                        46.900785
+4                         6.180652
+5                        42.459315
+6                        83.483149
+7                        73.993021
+8                        75.988615
+9                        12.685979
+10                        4.738097
+11                       35.128198
+12                       40.759561
+13                       46.496407
+14                       51.018226
+15                       67.861286
+16                       65.128929
+17                       60.531996
+18                       37.719596
+19                       53.149476
+20                       27.302109
+21                       56.442187
+22                       20.620608
+23                       82.717183
+24                       35.336412
+25                       74.944197
+26                       58.887681
+27                       36.711043
+28                       34.623254
+29                        8.251102
+30                       35.389637
+31                       98.164490
+32                        1.452783
+33                       63.237760
+34                       94.120441
+35                       38.983544
+36                       83.720753
+37                       68.059045
+38                       33.980272
+39                       98.440292
+40                       26.539703
+41                       20.070069
+42                       66.092429
+43                       47.867331
+44                       51.963134
+45                       33.753677
+46                       64.360838
+47                       22.363144
+48                       30.687743
+49                       15.147781
+50                       98.351177
+51                        2.227005
+52                       13.897652
+53                        2.584836
+54                        9.828888
+55                       27.360357
+56                       49.790758
+57                       81.239751
+58                       75.265427
+59                       62.513581
+60                       44.614740
+61                       72.290435
+62                       67.111503
+63                        7.840737
+64                       12.118583
+65                       83.679598
+66                       42.637891
+67                       87.414080
+68                       69.651664
+69                       94.980119
+70                       42.244453
+71                       64.597885
+72                       91.535020
+73                       50.085813
+74                       77.392195
+75                       40.777143
+76                       86.878743
+77                       78.387383
+78                       60.747023
+79                       97.989781
+80                       58.548957
+81                       33.643071
+82                        2.914789
+83                       35.849142
+84                       56.563354
+85                       31.373209
+86                       24.197721
+87                       93.203519
+88                       50.935507
+89                       34.512782
+90                       29.812064
+91                       52.747298
+92                       96.409167
+93                        8.733039
+94                       65.854115
+95                       86.487201
+96                       63.131362
+97                       24.744532
+98                       20.665501
+99                       41.963879
+100                      55.664152
+> wynik_f
+    runif(100, min = 1, max = 100)
+1                     3.800349e+04
+2                     4.205166e+05
+3                     1.030731e+05
+4                     2.237424e+02
+5                     7.646046e+04
+6                     5.816635e+05
+7                     4.049614e+05
+8                     4.386268e+05
+9                     2.016234e+03
+10                    9.689204e+01
+11                    4.327760e+04
+12                    6.763404e+04
+13                    1.004283e+05
+14                    1.326912e+05
+15                    3.123760e+05
+16                    2.761322e+05
+17                    2.216756e+05
+18                    5.359079e+04
+19                    1.500339e+05
+20                    2.029653e+04
+21                    1.796961e+05
+22                    8.726836e+03
+23                    5.657965e+05
+24                    4.405256e+04
+25                    4.207841e+05
+26                    2.040905e+05
+27                    4.940208e+04
+28                    4.143606e+04
+29                    5.452384e+02
+30                    4.425214e+04
+31                    9.457429e+05
+32                    1.606471e-01
+33                    2.527622e+05
+34                    8.335925e+05
+35                    5.916598e+04
+36                    5.866451e+05
+37                    3.151157e+05
+38                    3.916766e+04
+39                    9.537379e+05
+40                    1.864032e+04
+41                    8.044238e+03
+42                    2.885734e+05
+43                    1.095818e+05
+44                    1.402052e+05
+45                    3.838842e+04
+46                    2.664743e+05
+47                    1.113931e+04
+48                    2.883842e+04
+49                    3.445443e+03
+50                    9.511497e+05
+51                    6.590933e+00
+52                    2.656463e+03
+53                    1.210060e+01
+54                    9.298819e+02
+55                    2.042695e+04
+56                    1.233377e+05
+57                    5.360115e+05
+58                    4.262194e+05
+59                    2.441748e+05
+60                    8.871530e+04
+61                    3.776385e+05
+62                    3.021329e+05
+63                    4.663447e+02
+64                    1.755499e+03
+65                    5.857802e+05
+66                    7.742997e+04
+67                    6.677755e+05
+68                    3.377656e+05
+69                    8.566469e+05
+70                    7.530470e+04
+71                    2.694305e+05
+72                    7.667577e+05
+73                    1.255445e+05
+74                    4.633898e+05
+75                    6.772167e+04
+76                    6.555797e+05
+77                    4.815009e+05
+78                    2.240472e+05
+79                    9.407016e+05
+80                    2.005876e+05
+81                    3.801183e+04
+82                    1.893446e+01
+83                    4.600022e+04
+84                    1.808564e+05
+85                    3.081722e+04
+86                    1.412009e+04
+87                    8.094629e+05
+88                    1.320465e+05
+89                    4.104026e+04
+90                    2.643612e+04
+91                    1.466521e+05
+92                    8.959041e+05
+93                    6.485675e+02
+94                    2.854621e+05
+95                    6.467544e+05
+96                    2.514881e+05
+97                    1.510139e+04
+98                    8.784139e+03
+99                    7.381309e+04
+100                   1.723639e+05
+> 
+> skal.arg <- as.data.frame(lapply(arg, nor))
+> skal.arg
+    runif.100..min...1..max...100.
+1                      0.331876039
+2                      0.757577250
+3                      0.468596443
+4                      0.048747193
+5                      0.422802199
+6                      0.845782796
+7                      0.747933824
+8                      0.768509608
+9                      0.115821062
+10                     0.033873581
+11                     0.347213936
+12                     0.405276702
+13                     0.464427067
+14                     0.511049755
+15                     0.684711918
+16                     0.656539662
+17                     0.609142491
+18                     0.373932825
+19                     0.533024239
+20                     0.266522217
+21                     0.566974088
+22                     0.197631890
+23                     0.837885220
+24                     0.349360756
+25                     0.757741027
+26                     0.592188609
+27                     0.363534031
+28                     0.342007657
+29                     0.070094787
+30                     0.349909538
+31                     0.997156319
+32                     0.000000000
+33                     0.637040561
+34                     0.955459726
+35                     0.386964894
+36                     0.848232639
+37                     0.686750937
+38                     0.335378121
+39                     1.000000000
+40                     0.258661355
+41                     0.191955503
+42                     0.666473931
+43                     0.478562122
+44                     0.520792329
+45                     0.333041790
+46                     0.648620180
+47                     0.215598494
+48                     0.301430152
+49                     0.141203731
+50                     0.999081177
+51                     0.007982695
+52                     0.128314139
+53                     0.011672156
+54                     0.086362714
+55                     0.267122791
+56                     0.498393824
+57                     0.822651997
+58                     0.761053097
+59                     0.629573834
+60                     0.445025937
+61                     0.730379123
+62                     0.676981196
+63                     0.065863671
+64                     0.109970865
+65                     0.847808304
+66                     0.424643422
+67                     0.886313074
+68                     0.703171795
+69                     0.964323527
+70                     0.420586841
+71                     0.651064273
+72                     0.928802465
+73                     0.501436019
+74                     0.782981364
+75                     0.405457984
+76                     0.880793424
+77                     0.793242360
+78                     0.611359557
+79                     0.995354965
+80                     0.588696162
+81                     0.331901377
+82                     0.015074170
+83                     0.354647313
+84                     0.568223385
+85                     0.308497729
+86                     0.234514091
+87                     0.946005696
+88                     0.510196878
+89                     0.340868630
+90                     0.292401375
+91                     0.528877544
+92                     0.979057873
+93                     0.075063847
+94                     0.664016763
+95                     0.876756394
+96                     0.635943530
+97                     0.240152050
+98                     0.198094769
+99                     0.417693956
+100                    0.558952069
+> 
+> dane_t <- cbind(skal.arg, wynik_f)
+> colnames(dane_t) <- c("arg", "wynik_f")
+> 
+> net.price <- neuralnet(wynik_f~arg, dane_t, hidden = c(1, 100), threshold = 0.01)
+Błąd w poleceniu 'neuralnet(wynik_f ~ arg, dane_t, hidden = c(1, 100), threshold = 0.01)':
+  nie udało się znaleźć funkcji 'neuralnet'
+> 
+> plot(net.price)
+> setwd("G:/APU/APu/lab3")
+> tablety <- read.csv("Tablety.csv")
+> 
+> cena <- normalize(tablety$cena)
+> 
+> cena
+ [1] 0.33233018 0.27214101 0.11923187 0.05746632 0.25938664 0.40212095 0.00000000 0.01991975 0.06291201 0.04858126
+[11] 1.00000000 0.59529951 0.10504443 0.16494698
+> tablety
+    X                                    nazwa               modem                wyswietlacz pamiec_RAM
+1   1                      Apple iPad Wi-FiCCZ      WiFi 802.11 ac 9,7  , Retina, 2048 x 1536          2
+2   2                 Apple iPad mini 4 Wi-Fi       WiFi 802.11 ac 7,9  , Retina, 2048 x 1536          2
+3   3          Apple iPad Wi-Fi 32GB MP2G2FD/A      WiFi 802.11 ac 9,7  , Retina, 2048 x 1536          2
+4   4 Samsung Galaxy Tab 3 10.1 16GB GT-P5210  WiFi 802.11 a/b/g/n 7,9  , Retina, 2048 x 1536          1
+5   5        Apple iPad Wi-Fi + Cellular 128GB      WiFi 802.11 ac 9,7  , Retina, 2048 x 1536          2
+6   6                 Apple iPad Pro 9,7 Wi-Fi      WiFi 802.11 ac    10,1  , TFT, 1280 x 800          1
+7   7                       NavRoad Nexo 10 3G  WiFi 802.11 b/g/n, 9,7  , Retina, 2048 x 1536          2
+8   8                            Apple iPad XD  WiFi 802.11 b/g/n, 9,7  , Retina, 2048 x 1536          2
+9   9                           Apple iPad XII   WiFi 802.11 b/g/n    7 cali, TFT, 1024 x 600          2
+10 10                           Apple iPad CDS      WiFi 802.11 ac    9,7  , IPS, 2048 x 1536          2
+11 12                       Apple iPad Wi-Fi X      WiFi 802.11 ac 9,7  , Extrim, 2048 x 1536          8
+12 13                       Apple iPad Wi-Fi 1      WiFi 802.11 ac 9,7  , Extrim, 2048 x 1536          6
+13 14                       Apple iPad Wi-Fi 2      WiFi 802.11 ac 9,7  , Extrim, 2048 x 1536          4
+14 15                       Apple iPad Wi-Fi 4      WiFi 802.11 ac 9,7  , Extrim, 2048 x 1536          8
+   pamiec_wbudowana cena liczba_opini ocena status_opinii_1
+1               128 2819            3     5            Mało
+2                32 2399            5     4         Śdernio
+3                16 1332            0     2            Brak
+4               128  901            4     1         Śdernio
+5                32 2310            8     4            Dużo
+6                32 3306            1     2            Mało
+7                32  500            2     1            Mało
+8                 4  639            3     5            Mało
+9                16  939            1     1            Mało
+10               16  839            1     3            Mało
+11              512 7478            7     5            Dużo
+12              128 4654            1     4            Mało
+13              254 1233            4     5         Śdernio
+14               64 1651            9     3     Bardzo duzo
+> tablety <- tablety[,-7]
+> tablety
+    X                                    nazwa               modem                wyswietlacz pamiec_RAM
+1   1                      Apple iPad Wi-FiCCZ      WiFi 802.11 ac 9,7  , Retina, 2048 x 1536          2
+2   2                 Apple iPad mini 4 Wi-Fi       WiFi 802.11 ac 7,9  , Retina, 2048 x 1536          2
+3   3          Apple iPad Wi-Fi 32GB MP2G2FD/A      WiFi 802.11 ac 9,7  , Retina, 2048 x 1536          2
+4   4 Samsung Galaxy Tab 3 10.1 16GB GT-P5210  WiFi 802.11 a/b/g/n 7,9  , Retina, 2048 x 1536          1
+5   5        Apple iPad Wi-Fi + Cellular 128GB      WiFi 802.11 ac 9,7  , Retina, 2048 x 1536          2
+6   6                 Apple iPad Pro 9,7 Wi-Fi      WiFi 802.11 ac    10,1  , TFT, 1280 x 800          1
+7   7                       NavRoad Nexo 10 3G  WiFi 802.11 b/g/n, 9,7  , Retina, 2048 x 1536          2
+8   8                            Apple iPad XD  WiFi 802.11 b/g/n, 9,7  , Retina, 2048 x 1536          2
+9   9                           Apple iPad XII   WiFi 802.11 b/g/n    7 cali, TFT, 1024 x 600          2
+10 10                           Apple iPad CDS      WiFi 802.11 ac    9,7  , IPS, 2048 x 1536          2
+11 12                       Apple iPad Wi-Fi X      WiFi 802.11 ac 9,7  , Extrim, 2048 x 1536          8
+12 13                       Apple iPad Wi-Fi 1      WiFi 802.11 ac 9,7  , Extrim, 2048 x 1536          6
+13 14                       Apple iPad Wi-Fi 2      WiFi 802.11 ac 9,7  , Extrim, 2048 x 1536          4
+14 15                       Apple iPad Wi-Fi 4      WiFi 802.11 ac 9,7  , Extrim, 2048 x 1536          8
+   pamiec_wbudowana liczba_opini ocena status_opinii_1
+1               128            3     5            Mało
+2                32            5     4         Śdernio
+3                16            0     2            Brak
+4               128            4     1         Śdernio
+5                32            8     4            Dużo
+6                32            1     2            Mało
+7                32            2     1            Mało
+8                 4            3     5            Mało
+9                16            1     1            Mało
+10               16            1     3            Mało
+11              512            7     5            Dużo
+12              128            1     4            Mało
+13              254            4     5         Śdernio
+14               64            9     3     Bardzo duzo
+> tablety <- tablety[,-4]
+> tablety
+    X                                    nazwa               modem pamiec_RAM pamiec_wbudowana liczba_opini ocena
+1   1                      Apple iPad Wi-FiCCZ      WiFi 802.11 ac          2              128            3     5
+2   2                 Apple iPad mini 4 Wi-Fi       WiFi 802.11 ac          2               32            5     4
+3   3          Apple iPad Wi-Fi 32GB MP2G2FD/A      WiFi 802.11 ac          2               16            0     2
+4   4 Samsung Galaxy Tab 3 10.1 16GB GT-P5210  WiFi 802.11 a/b/g/n          1              128            4     1
+5   5        Apple iPad Wi-Fi + Cellular 128GB      WiFi 802.11 ac          2               32            8     4
+6   6                 Apple iPad Pro 9,7 Wi-Fi      WiFi 802.11 ac          1               32            1     2
+7   7                       NavRoad Nexo 10 3G  WiFi 802.11 b/g/n,          2               32            2     1
+8   8                            Apple iPad XD  WiFi 802.11 b/g/n,          2                4            3     5
+9   9                           Apple iPad XII   WiFi 802.11 b/g/n          2               16            1     1
+10 10                           Apple iPad CDS      WiFi 802.11 ac          2               16            1     3
+11 12                       Apple iPad Wi-Fi X      WiFi 802.11 ac          8              512            7     5
+12 13                       Apple iPad Wi-Fi 1      WiFi 802.11 ac          6              128            1     4
+13 14                       Apple iPad Wi-Fi 2      WiFi 802.11 ac          4              254            4     5
+14 15                       Apple iPad Wi-Fi 4      WiFi 802.11 ac          8               64            9     3
+   status_opinii_1
+1             Mało
+2          Śdernio
+3             Brak
+4          Śdernio
+5             Dużo
+6             Mało
+7             Mało
+8             Mało
+9             Mało
+10            Mało
+11            Dużo
+12            Mało
+13         Śdernio
+14     Bardzo duzo
+> tablety <- tablety[,-3]
+> tablety
+    X                                    nazwa pamiec_RAM pamiec_wbudowana liczba_opini ocena status_opinii_1
+1   1                      Apple iPad Wi-FiCCZ          2              128            3     5            Mało
+2   2                 Apple iPad mini 4 Wi-Fi           2               32            5     4         Śdernio
+3   3          Apple iPad Wi-Fi 32GB MP2G2FD/A          2               16            0     2            Brak
+4   4 Samsung Galaxy Tab 3 10.1 16GB GT-P5210           1              128            4     1         Śdernio
+5   5        Apple iPad Wi-Fi + Cellular 128GB          2               32            8     4            Dużo
+6   6                 Apple iPad Pro 9,7 Wi-Fi          1               32            1     2            Mało
+7   7                       NavRoad Nexo 10 3G          2               32            2     1            Mało
+8   8                            Apple iPad XD          2                4            3     5            Mało
+9   9                           Apple iPad XII          2               16            1     1            Mało
+10 10                           Apple iPad CDS          2               16            1     3            Mało
+11 12                       Apple iPad Wi-Fi X          8              512            7     5            Dużo
+12 13                       Apple iPad Wi-Fi 1          6              128            1     4            Mało
+13 14                       Apple iPad Wi-Fi 2          4              254            4     5         Śdernio
+14 15                       Apple iPad Wi-Fi 4          8               64            9     3     Bardzo duzo
+> tablety <- tablety[,-1]
+> tablety
+                                      nazwa pamiec_RAM pamiec_wbudowana liczba_opini ocena status_opinii_1
+1                       Apple iPad Wi-FiCCZ          2              128            3     5            Mało
+2                  Apple iPad mini 4 Wi-Fi           2               32            5     4         Śdernio
+3           Apple iPad Wi-Fi 32GB MP2G2FD/A          2               16            0     2            Brak
+4  Samsung Galaxy Tab 3 10.1 16GB GT-P5210           1              128            4     1         Śdernio
+5         Apple iPad Wi-Fi + Cellular 128GB          2               32            8     4            Dużo
+6                  Apple iPad Pro 9,7 Wi-Fi          1               32            1     2            Mało
+7                        NavRoad Nexo 10 3G          2               32            2     1            Mało
+8                             Apple iPad XD          2                4            3     5            Mało
+9                            Apple iPad XII          2               16            1     1            Mało
+10                           Apple iPad CDS          2               16            1     3            Mało
+11                       Apple iPad Wi-Fi X          8              512            7     5            Dużo
+12                       Apple iPad Wi-Fi 1          6              128            1     4            Mało
+13                       Apple iPad Wi-Fi 2          4              254            4     5         Śdernio
+14                       Apple iPad Wi-Fi 4          8               64            9     3     Bardzo duzo
+> 
+> tablety[,4:7] <- as.data.frame(lapply(tablety[,4:7], normalize))
+Błąd w poleceniu '`[.data.frame`(tablety, , 4:7)':nie wybrano kolumn
+> 
+> tablety <- cbind(tablety, cena)
+> tablety
+                                      nazwa pamiec_RAM pamiec_wbudowana liczba_opini ocena status_opinii_1       cena
+1                       Apple iPad Wi-FiCCZ          2              128            3     5            Mało 0.33233018
+2                  Apple iPad mini 4 Wi-Fi           2               32            5     4         Śdernio 0.27214101
+3           Apple iPad Wi-Fi 32GB MP2G2FD/A          2               16            0     2            Brak 0.11923187
+4  Samsung Galaxy Tab 3 10.1 16GB GT-P5210           1              128            4     1         Śdernio 0.05746632
+5         Apple iPad Wi-Fi + Cellular 128GB          2               32            8     4            Dużo 0.25938664
+6                  Apple iPad Pro 9,7 Wi-Fi          1               32            1     2            Mało 0.40212095
+7                        NavRoad Nexo 10 3G          2               32            2     1            Mało 0.00000000
+8                             Apple iPad XD          2                4            3     5            Mało 0.01991975
+9                            Apple iPad XII          2               16            1     1            Mało 0.06291201
+10                           Apple iPad CDS          2               16            1     3            Mało 0.04858126
+11                       Apple iPad Wi-Fi X          8              512            7     5            Dużo 1.00000000
+12                       Apple iPad Wi-Fi 1          6              128            1     4            Mało 0.59529951
+13                       Apple iPad Wi-Fi 2          4              254            4     5         Śdernio 0.10504443
+14                       Apple iPad Wi-Fi 4          8               64            9     3     Bardzo duzo 0.16494698
+> 
+> net.price2 <- neuralnet(cena~pamiec_wbudowana+pamiec_RAM+liczba_opini+ocena,
++                        tablety, hidden = c(5,3,3), threshold = 0.01)
+Błąd w poleceniu 'neuralnet(cena ~ pamiec_wbudowana + pamiec_RAM + liczba_opini + ':
+  nie udało się znaleźć funkcji 'neuralnet'
+> 
+> plot(net.price2)
