@@ -1,0 +1,89 @@
+> library("C50")
+> 
+> setwd("G:/APU/APu/lab4")
+> tablety <- read.csv("Tablety.csv", sep=",")
+> 
+> summary(tablety)
+       X                                       nazwa                  modem                    wyswietlacz
+ Min.   : 1.000   Apple iPad CDS                  :1    WiFi 80211 ac    :1   97   Retina 2048 x 1536:3   
+ 1st Qu.: 4.250   Apple iPad mini 4 WiFi          :1   WiFi 80211 a/b/g/n:1   97  Extrim, 2048 x 1536:3   
+ Median : 7.500   Apple iPad Pro 97 WiFi          :1   WiFi 80211 ac     :9   101   TFT 1280 x 800   :1   
+ Mean   : 7.786   Apple iPad WiFi + Cellular 128GB:1   WiFi 80211 b/g/n  :3   7 cali TFT 1024 x 600  :1   
+ 3rd Qu.:11.500   Apple iPad WiFi 1               :1                          79   Retina 2048 x 1536:1   
+ Max.   :15.000   Apple iPad WiFi 2               :1                          79  Retin 2048 x 1536  :1   
+                  (Other)                         :8                          (Other)                :4   
+   pamiec_RAM    pamiec_wbudowana      cena         liczba_opini      ocena          status_opinii_1
+ Min.   :1.000   Min.   :  4.00   Min.   : 500.0   Min.   :0.00   Min.   :1.000   Bardzo duzo:1     
+ 1st Qu.:2.000   1st Qu.: 20.00   1st Qu.: 910.5   1st Qu.:1.00   1st Qu.:2.000   Brak       :1     
+ Median :2.000   Median : 32.00   Median :1491.5   Median :3.00   Median :3.500   Dużo       :2     
+ Mean   :3.143   Mean   : 99.57   Mean   :2214.3   Mean   :3.50   Mean   :3.214   Mało       :7     
+ 3rd Qu.:3.500   3rd Qu.:128.00   3rd Qu.:2714.0   3rd Qu.:4.75   3rd Qu.:4.750   Śdernio    :3     
+ Max.   :8.000   Max.   :512.00   Max.   :7478.0   Max.   :9.00   Max.   :5.000                     
+                                                                                                    
+> 
+> tablety$ocena <- factor(tablety$ocena)
+> tablety
+    X                                  nazwa              modem              wyswietlacz pamiec_RAM pamiec_wbudowana
+1   1                     Apple iPad WiFiCCZ      WiFi 80211 ac  97   Retina 2048 x 1536          2              128
+2   2                Apple iPad mini 4 WiFi       WiFi 80211 ac    79  Retin 2048 x 1536          2               32
+3   3         Apple iPad WiFi 32GB MP2G2FD/A      WiFi 80211 ac  97   Retina 2048 x 1536          2               16
+4   4 Samsung Galaxy Tab 3 101 16GB GTP5210  WiFi 80211 a/b/g/n  79   Retina 2048 x 1536          1              128
+5   5       Apple iPad WiFi + Cellular 128GB      WiFi 80211 ac  97   Retina 2048 x 1536          2               32
+6   6                 Apple iPad Pro 97 WiFi      WiFi 80211 ac     101   TFT 1280 x 800          1               32
+7   7                     NavRoad Nexo 10 3G   WiFi 80211 b/g/n   97  Retina 2048 x 1536          2               32
+8   8                          Apple iPad XD   WiFi 80211 b/g/n 97   Retina, 2048 x 1536          2                4
+9   9                         Apple iPad XII   WiFi 80211 b/g/n    7 cali TFT 1024 x 600          2               16
+10 10                         Apple iPad CDS      WiFi 80211 ac     97   IPS 2048 x 1536          2               16
+11 12                      Apple iPad WiFi X      WiFi 80211 ac 97   Extrim, 2048 x 1536          8              512
+12 13                      Apple iPad WiFi 1      WiFi 80211 ac  97  Extrim, 2048 x 1536          6              128
+13 14                      Apple iPad WiFi 2      WiFi 80211 ac  97  Extrim, 2048 x 1536          4              254
+14 15                      Apple iPad WiFi 4      WiFi 80211 ac  97  Extrim, 2048 x 1536          8               64
+   cena liczba_opini ocena status_opinii_1
+1  2819            3     5            Mało
+2  2399            5     4         Śdernio
+3  1332            0     2            Brak
+4   901            4     1         Śdernio
+5  2310            8     4            Dużo
+6  3306            1     2            Mało
+7   500            2     1            Mało
+8   639            3     5            Mało
+9   939            1     1            Mało
+10  839            1     3            Mało
+11 7478            7     5            Dużo
+12 4654            1     4            Mało
+13 1233            4     5         Śdernio
+14 1651            9     3     Bardzo duzo
+> 
+> drzewo <- C5.0.default(x=tablety[,-10], y=tablety$ocena)
+c50 code called exit with value 1
+> 
+> summary(drzewo)
+
+Call:
+C5.0.default(x = tablety[, -10], y = tablety$ocena)
+
+
+C5.0 [Release 2.07 GPL Edition]  	Tue Apr 21 13:40:29 2020
+-------------------------------
+
+Class specified by attribute `outcome'
+
+*** line 8 of `undefined.data': bad value of `97 Retina, 2048 x 1536' for attribute `wyswietlacz'
+
+Error limit exceeded
+
+> drzewo
+
+Call:
+C5.0.default(x = tablety[, -10], y = tablety$ocena)
+
+Classification Tree
+Number of samples: 14 
+Number of predictors: 9 
+
+Tree size: 0 
+
+Non-standard options: attempt to group attributes
+
+> plot(drzewo)
+Błąd w poleceniu '1:which(out == "Decision tree:")':argument ma długość 0
